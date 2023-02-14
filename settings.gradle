@@ -1,2 +1,30 @@
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+    }
+    // includeBuild("../my-build-logic")
+}
+
+plugins {
+    // id("..")
+}
+
 rootProject.name = 'gradle-first'
 
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+    // includeBuild("../my-other-project")
+}
+
+include("app")
+include("business-logic")
+include("data-model")
+
+println("Including following directories:")
+rootDir.listFiles().findAll {it.isDirectory() && !it.isHidden()}.forEach {
+    println("- " + it.name)
+}
